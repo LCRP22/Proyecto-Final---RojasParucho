@@ -2,6 +2,10 @@
 Proyecto Final Con Python Y Django - CoderHouse
 Link Del Video: https://www.loom.com/share/1314f67e36b74db68c72e5cf13829b50
 
+superuser:
+usuario: luis
+contraseña: soyadmin12
+
 Documentacion Aqui Tratare De Explicar Un Poco Sobre lo Que Hice En Mi Proyecto, Ademas De Que Funciones Utilice y Que tal Fueron Los Resultados, Para Acceder A Estos, Se Encuentran Dentro De La Carpeta Del Proyecto, Esta Seria La Ubicacion "blog/devsocial/" Aqui Encontraras La Mayoria De Archivos Importantes
 
 Models.py Dentro De Este Archivo De Python Se Encontrara Con Dos Modelos (Post Y Comentario) Cada Uno De Estos Recibe En La BD, Un Nombre, Una Fecha, Un Contenido,etc
