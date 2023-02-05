@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link type='text/css' rel="stylesheet" href={% static 'css/login.css' %}>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <a class="inactive underlineHover" href={% url 'login' %}> Iniciar Sesion </a>
+          <h2 class="active"> Registrarse </h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-icon-library/user-286.png" id="icon" alt="User Icon" />
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="fadeIn fourth" value="Register"></button>
+    <!-- Remind Passowrd -->
+   
+  
+    </div>
+    </div>
+</body>
+</html>

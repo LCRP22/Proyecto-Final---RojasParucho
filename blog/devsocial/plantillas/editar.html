@@ -1,0 +1,17 @@
+{% extends "padre.html" %}
+
+{% block title %} postear {% endblock %}
+
+
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    <table>
+
+        {{ miFormulario.as_table }}
+
+    </table>
+
+    <input type="submit", value="Enviar">
+</form>
+{% endblock %}

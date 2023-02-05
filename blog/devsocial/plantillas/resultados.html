@@ -1,0 +1,66 @@
+{% extends "padre.html" %}
+
+{% block title %} Resultados {% endblock %}
+
+{% block head %}
+<style>
+    .review__item__text{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+    }
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
+    <div class="container py-5">
+        <div class="row align-items-center py-4">
+            <div class="col-md-6 text-center text-md-left">
+                <h1 class="mb-4 mb-md-0 text-white">Articulos</h1>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="btn text-white" href="{% url 'index' %}">Inicio</a>
+                    <i class="fas fa-angle-right text-white"></i>
+                    <a class="btn text-white disabled" href="#">Blog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if posts  %}
+{% for post in posts %}
+<div>
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-md-6 mb-2">
+                <div class="bg-light mb-4">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="{{post.imagen.url}}" style="height: 500px;">
+                        <a href={% url 'v' post.id %} class="position-absolute w-100 h-100 d-flex flex-column align-items-center justify-content-center   text-decoration-none p-4" style="top: 0; left: 0; background: rgba(0, 0, 0, .4);">
+                            <h4 class="text-center text-white font-weight-medium mb-3"> {{ post.titulo }} </h4>
+                            <div class="d-flex text-light">
+                                <small class="mr-2"><i class="fa fa-user text-secondary"></i>{{ post.usuario }}</small>
+                                <small class="mr-2"><i class="fa fa-folder text-secondary"></i> {{ post.fecha }}</small>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="review__item__text"> {{ post.contenido }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+{% endfor %}
+{% else %}
+<p>No Se Obtuvieron Resultados</p>
+{% endif %}
+{% endblock %}

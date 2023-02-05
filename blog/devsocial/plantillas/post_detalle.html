@@ -1,0 +1,86 @@
+{% extends "padre.html" %}
+
+{% block title %} bloglr2 {% endblock %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header container-fluid bg-secondary pt-2 pt-lg-5 pb-2 mb-5">
+    <div class="container py-5">
+        <div class="row align-items-center py-4">
+            <div class="col-md-6 text-center text-md-left">
+                <h1 class="mb-4 mb-md-0 text-white">{{ blog.titulo }}</h1>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="btn text-white" href="{% url 'leeblogs' %}">Blog</a>
+                    <i class="fas fa-angle-right text-white"></i>
+                    <a class="btn text-white disabled" href="">{{blog.titulo}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <img src="{{ blog.imagen.url }}" style="width: 250px;">
+            <center>Publicado El: {{ blog.fecha }}</center>
+        </td>
+        <td>
+            <hr><p><code><em>{{ blog.contenido }}</em></code></p>
+            <strong><code><center>Publicado Por: {{ blog.usuario }}</center></code></strong>
+        </td>
+    </tr>
+</table>
+{% if user.is_superuser%}
+<a href={% url 'eliminar' blog.id %}><button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Tooltip on left">Eliminar</button></a>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center><h4 class="card-title">Agregar Un Comentario</h4></center>
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    <center><table>
+
+      {{ miComentario.info }}
+    </table>
+
+    <input type="submit", value="Comentar">
+</form></center>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% for comentario in comentarios %}
+{% if comentario.post == blog.titulo %}
+
+<table class="table table-hover">
+    <tbody>
+        <center><div class="card bg-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-header">{{comentario.fecha}}</div>
+            <div class="card-body">
+              <h4 class="card-title">{{comentario.nombre}}</h4>
+              <p class="card-text">{{comentario.info}}</p>
+        </div></center>
+    </tbody>    
+</table>
+
+{% endif %}
+{% endfor %}
+
+{% endblock %}
